@@ -1,0 +1,183 @@
+<!-- START OF FILE index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Fitkhao - Pre-register for Personalized Diet Meal Delivery</title>
+    <meta name="description" content="Fitkhao delivers delicious, healthy meals tailored to your BMI and calorie needs. Pre-register now for the easiest way to track calories and achieve your fitness goals!">
+    <meta name="keywords" content="diet food delivery, healthy meals, personalized diet, BMI calculator, calorie tracker, meal plan, nutrition app, weight loss, muscle gain, fitkhao, pre-register">
+    <meta name="author" content="Fitkhao">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.your-fitkhao-domain.com/"> <!-- Replace with your actual domain later -->
+    <meta property="og:title" content="Fitkhao - Personalized Diet Meal Delivery">
+    <meta property="og:description" content="Eat Smart. Stay Fit. Pre-register for Fitkhao and get healthy meals tailored to your goals, delivered to your door.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Fitkhao+Social+Preview"> <!-- Replace with a preview image URL -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.your-fitkhao-domain.com/"> <!-- Replace with your actual domain later -->
+    <meta property="twitter:title" content="Fitkhao - Personalized Diet Meal Delivery">
+    <meta property="twitter:description" content="Eat Smart. Stay Fit. Pre-register for Fitkhao and get healthy meals tailored to your goals, delivered to your door.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Fitkhao+Social+Preview"> <!-- Replace with a preview image URL -->
+
+    <!-- Favicon (replace with your actual favicon files) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Google Fonts (Example: Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Also import Gloock for the text logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header id="hero" class="scroll-section">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Dynamic Clock Logo -->
+                <div id="clock-logo" class="logo">
+                    <img src="bg.png" alt="Clock Face" id="clock-face">
+
+                    <!-- === ADDED SHADOW LAYER START === -->
+                    <div id="shadow-layer">
+                        <img src="spoon.png" alt="" id="hour-shadow" class="shadow-hand clock-hand">
+                        <img src="fork.png" alt="" id="minute-shadow" class="shadow-hand clock-hand">
+                    </div>
+                    <!-- === ADDED SHADOW LAYER END === -->
+
+                    <!-- Real Hands -->
+                    <img src="spoon.png" alt="Hour Hand" id="hour-hand" class="clock-hand">
+                    <img src="fork.png" alt="Minute Hand" id="minute-hand" class="clock-hand">
+                    <!-- Second Hand (No Shadow) -->
+                    <img src="second.png" alt="Second Hand" id="second-hand" class="clock-hand">
+                </div>
+
+                <div class="text-logo animate-on-scroll fade-in">Fitkhao</div>
+                
+                <p class="animate-on-scroll fade-in-up delay-1">Eat Smart. Stay Fit. Get personalized, delicious diet meals delivered. Fitkhao calculates your needs, tracks your calories, and makes healthy eating effortless. Pre-register now!</p>
+
+                <form id="preregister-form" class="animate-on-scroll fade-in-up delay-2">
+                    <label for="email" class="sr-only">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit">Pre-register for Fitkhao</button>
+                </form>
+                <div id="form-message"></div>
+                <h1 class="animate-on-scroll fade-in-up">Healthy Meals, Tailored For You</h1>   
+                <p class="availability animate-on-scroll fade-in-up delay-3">Launching soon on Android & iOS!</p>
+            </div>
+            <div class="hero-image animate-on-scroll fade-in-right">
+                 <img src="https://via.placeholder.com/400x600.png?text=Healthy+Meal+Example" alt="Delicious healthy meal from Fitkhao">
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="scroll-section">
+        <div class="container">
+            <h2 class="animate-on-scroll fade-in">Effortless Healthy Eating</h2>
+            <div class="features-grid">
+                <div class="feature-item animate-on-scroll fade-in-up">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Personalized Plans</h3>
+                    <p>Fitkhao calculates your BMI & daily calorie needs to recommend meals perfectly tailored to your body and goals.</p>
+                </div>
+                <div class="feature-item animate-on-scroll fade-in-up delay-1">
+                     <i class="fas fa-utensils"></i>
+                    <h3>Tasty & Nutritious</h3>
+                    <p>Explore a diverse menu of delicious, chef-prepared meals with clearly marked calorie counts. Healthy never tasted so good!</p>
+                </div>
+                <div class="feature-item animate-on-scroll fade-in-up delay-2">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Track Your Progress</h3>
+                    <p>Stay motivated and monitor your daily intake effortlessly with our integrated calorie meter. Keep your goals in sight.</p>
+                </div>
+                 <div class="feature-item animate-on-scroll fade-in-up delay-3">
+                    <i class="fas fa-truck"></i>
+                    <h3>Convenient Delivery</h3>
+                    <p>Get healthy choices delivered straight to your door, saving you time and making balanced eating fit your busy lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="scroll-section">
+        <div class="container">
+            <h2 class="animate-on-scroll fade-in">Simple Steps to a Healthier You</h2>
+             <div class="steps-container">
+                <div class="step-item animate-on-scroll fade-in-left">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>1. Tell Us About You</h3>
+                    <p>Enter your details, and Fitkhao calculates your optimal daily calorie intake using your BMI.</p>
+                </div>
+                 <div class="step-item animate-on-scroll fade-in-up delay-1">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h3>2. Select Your Meals</h3>
+                    <p>Browse our delicious, calorie-counted menu and choose meals that fit your personalized plan.</p>
+                </div>
+                 <div class="step-item animate-on-scroll fade-in-right delay-2">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>3. Enjoy & Track</h3>
+                    <p>Receive your meals, enjoy healthy eating, and track your progress effortlessly within the app!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Sneak Peek Section (Optional - can uncomment if you have a good UI image) -->
+    <!--
+    <section id="sneak-peek" class="scroll-section">
+        <div class="container">
+             <h2 class="animate-on-scroll fade-in">A Glimpse Inside the App</h2>
+             <p class="animate-on-scroll fade-in delay-1">Making healthy choices has never been easier or more intuitive.</p>
+            <img src="https://via.placeholder.com/800x450.png?text=Fitkhao+App+Interface" alt="Fitkhao App User Interface showing meal selection and calorie tracking" class="sneak-peek-img animate-on-scroll zoom-in">
+        </div>
+    </section>
+    -->
+
+    <!-- Call to Action (Footer) Section -->
+    <section id="cta" class="scroll-section">
+        <div class="container">
+            <h2 class="animate-on-scroll fade-in">Ready to Transform Your Diet?</h2>
+            <p class="animate-on-scroll fade-in delay-1">Don't wait to achieve your health goals. Pre-register now for exclusive launch updates and be the first to experience Fitkhao!</p>
+            <a href="#hero" class="cta-button animate-on-scroll fade-in-up delay-2">Pre-register for Fitkhao</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>© <span id="year"></span> Fitkhao. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p> <!-- Add links later -->
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

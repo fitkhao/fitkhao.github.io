@@ -1,0 +1,619 @@
+/* START OF FILE style.css */
+
+/* --- Base Styles & Resets --- */
+:root {
+    /* Updated color scheme for Fitkhao (Green/Blue - Clean & Healthy) */
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #2196F3; /* Blue */
+    /* Alternative: --secondary-color: #FF9800; /* Orange */
+    --dark-color: #2d3436; /* Darker Gray */
+    --light-color: #f8f9fa; /* Very Light Gray */
+    --text-color: #333;
+    --white-color: #ffffff;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --info-color: #17a2b8; /* For mailto message */
+    --font-family: 'Poppins', sans-serif;
+    --logo-font: 'Gloock', serif;
+    --shadow-offset-x: 2px;
+    --shadow-offset-y: 4px;
+    --shadow-blur: 3px;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+
+    --clock-size: 180px; /* Match original logo max-width */
+    /* --hour-hand-height: 30%; */
+    --hour-hand-width: 10%;
+    /* --minute-hand-height: 40%; */
+    --minute-hand-width: 10%;
+    --second-hand-size: 60%; 
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+h1 { font-size: 2.8rem; font-weight: 700; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 3rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* --- Section Styling --- */
+.scroll-section {
+    padding: 80px 0;
+    min-height: 60vh; /* Ensure sections have enough height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Hero Section --- */
+#hero {
+    /* Updated gradient */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+#hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+#hero .hero-content {
+    flex: 1;
+    text-align: left;
+    max-width: 600px;
+}
+
+#hero .hero-image {
+    flex-basis: 40%;
+    max-width: 400px;
+    margin: 20px auto 0;
+}
+#hero .hero-image img {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+#hero h1 {
+    color: var(--white-color);
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* --- REMOVED: Static logo styles --- */
+/* #hero .logo {
+    max-width: 180px;
+    margin-bottom: 1.5rem;
+} */
+
+/* --- ADDED: Dynamic Clock Logo Styles --- */
+#clock-logo {
+    width: var(--clock-size);
+    height: var(--clock-size);
+    position: relative; /* Crucial for absolute positioning of hands */
+    margin-bottom: 1.5rem; /* Maintain original spacing */
+    /* If alignment issues, uncomment below */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+}
+#shadow-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Apply the shadow effect to the entire layer */
+    filter: drop-shadow(var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) var(--shadow-color));
+    /* Alternative: simple blur/opacity */
+    /* filter: blur(2px); */
+    /* opacity: 0.5; */
+    z-index: 5; /* Below real hands but above face */
+    pointer-events: none; /* Make it non-interactive */
+}
+
+
+
+#clock-face {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.clock-hand {
+    position: absolute;
+    /* Default pivot for hour/minute */
+    bottom: 50%;
+    left: 50%;
+    transform-origin: center bottom;
+    background-color: transparent; /* Ensure no background interferes */
+    z-index: 10; /* Ensure hands are above the face */
+}
+
+/* --- Specific Hand Styles --- */
+#hour-hand, #hour-shadow {
+    height: auto;
+    width: var(--hour-hand-width);
+    /* Center the hand based on its width */
+    left: calc(50% - var(--hour-hand-width) / 2);
+    /* bottom: 50%; Inherited */
+    /* transform-origin: center bottom; Inherited */
+    border-radius: 5px 5px 0 0; /* Optional styling */
+    filter: drop-shadow(2px 4px 3px rgba(0, 0, 0, 0.4));
+}
+
+#minute-hand, #minute-shadow {
+    height: auto;
+    width: var(--minute-hand-width);
+     /* Center the hand based on its width */
+    left: calc(50% - var(--minute-hand-width) / 2);
+    /* bottom: 50%; Inherited */
+    /* transform-origin: center bottom; Inherited */
+    border-radius: 5px 5px 0 0; /* Optional styling */
+    /* filter: drop-shadow(2px 4px 3px rgba(0, 0, 0, 0.4)); */
+}
+#hour-hand, #minute-hand {
+    z-index: 10;
+}
+/* --- Second Hand Specific Styling --- */
+#second-hand { /* Removed .circular-hand class, targeting ID directly */
+    width: var(--second-hand-size);
+    height: var(--second-hand-size); /* Maintain aspect ratio */
+
+    /* Explicitly center the *element's center* at the *parent's center* */
+    /* These override the defaults from .clock-hand */
+    bottom: 50%; /* Position vertical center */
+    left: 50%;   /* Position horizontal center */
+    top: 50%;
+    right: 50%;
+    /* Set the rotation origin to its own center */
+    transform-origin: center;
+
+    /* Apply the centering translation AND initial rotation (handled by JS) */
+    /* Initial state set via JS, but this CSS ensures the logic is clear */
+    transform: translate(-50%, -50%) rotate(0deg);
+
+    z-index: 2; /* Place below other hands */
+    filter: none;
+}
+/* --- END: Dynamic Clock Logo Styles --- */
+
+.text-logo {
+    font-family: var(--logo-font);
+    font-size: 5rem; /* Adjust size as needed */
+    color: var(--white-color);
+    line-height: 1.1;
+    margin-bottom: 0.5rem; /* Adjust spacing below logo */
+    font-weight: normal; /* Gloock typically has one weight */
+    /* Animation is handled by classes in HTML */
+}
+
+#preregister-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+    max-width: 500px;
+}
+
+#preregister-form input[type="email"] {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#preregister-form input[type="email"]:focus {
+    border-color: var(--secondary-color);
+}
+
+#preregister-form button {
+    padding: 15px 30px;
+    background-color: var(--white-color);
+    color: var(--primary-color); /* Use primary color text */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+}
+
+#preregister-form button:hover {
+    background-color: var(--light-color);
+    color: var(--secondary-color); /* Use secondary color on hover */
+}
+
+#form-message {
+    margin-top: 1rem;
+    font-weight: 600;
+    min-height: 1.2em; /* Reserve space */
+}
+#form-message.success { color: var(--success-color); }
+#form-message.error { color: var(--error-color); }
+#form-message.info { color: var(--info-color); } /* Style for info message */
+
+#hero .availability {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
+
+/* --- Features Section --- */
+#features {
+    background-color: var(--light-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.feature-item {
+    background-color: var(--white-color);
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color); /* Use primary color for icons */
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- How It Works Section --- */
+#how-it-works {
+    background-color: var(--white-color); /* Alternate background */
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.step-item {
+    flex: 1;
+    min-width: 220px;
+    max-width: 300px;
+}
+
+.step-item i {
+    font-size: 3rem;
+    color: var(--secondary-color); /* Use secondary color for step icons */
+    margin-bottom: 1rem;
+}
+
+.step-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Sneak Peek Section (If used) --- */
+#sneak-peek {
+    background-color: var(--light-color); /* Matches features section */
+    text-align: center;
+}
+#sneak-peek p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+.sneak-peek-img {
+    margin-top: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --- CTA Section --- */
+#cta {
+    /* Updated gradient */
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    color: var(--white-color);
+    text-align: center;
+}
+
+#cta h2 {
+    color: var(--white-color);
+}
+
+#cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--white-color);
+    color: var(--primary-color); /* Match hero button text color */
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--light-color);
+    color: var(--secondary-color); /* Match hero button hover color */
+    transform: translateY(-3px);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 40px 0;
+}
+
+footer .social-links {
+    margin-bottom: 1rem;
+}
+
+footer .social-links a {
+    color: var(--light-color);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: var(--primary-color); /* Use primary color for hover */
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+footer a {
+    color: var(--light-color);
+    opacity: 0.8;
+}
+footer a:hover {
+    opacity: 1;
+    color: var(--primary-color); /* Use primary color for hover */
+}
+
+
+/* --- Scroll Animation Classes --- */
+/* (These remain the same as the previous example) */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in { opacity: 0; }
+.fade-in-up { transform: translateY(50px); opacity: 0; }
+.fade-in-left { transform: translateX(-50px); opacity: 0; }
+.fade-in-right { transform: translateX(50px); opacity: 0; }
+.zoom-in { transform: scale(0.9); opacity: 0; }
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+
+/* --- Responsive Design --- */
+/* (These remain largely the same, minor tweaks possible if needed) */
+
+/* Tablets and smaller desktops */
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .container { max-width: 90%; }
+
+    #hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    #hero .hero-content {
+        text-align: center;
+        max-width: 100%;
+        order: 2;
+        /* Center clock and text logo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+     #hero .hero-image {
+        order: 1;
+        margin-bottom: 2rem;
+        flex-basis: auto;
+        max-width: 350px;
+    }
+    .text-logo {
+        font-size: 4.5rem; /* Slightly smaller */
+    }
+     #preregister-form {
+        justify-content: center;
+    }
+    
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    html { font-size: 15px; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+    h3 { font-size: 1.3rem; }
+
+    .scroll-section {
+        padding: 60px 0;
+    }
+
+    #hero .container {
+        padding: 0 15px;
+    }
+
+     #hero .hero-image {
+        max-width: 80%;
+    }
+    .text-logo {
+        font-size: 4rem; /* Smaller on mobile */
+        margin-bottom: 0.3rem;
+    }
+
+     #clock-logo {
+        width: 150px; /* Adjust clock size */
+        height: 150px;
+        margin-bottom: 1rem;
+     }
+
+
+    #preregister-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+     #preregister-form input[type="email"],
+    #preregister-form button {
+        width: 100%;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Stack features */
+    }
+
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .step-item {
+        margin-bottom: 20px;
+    }
+    .sneak-peek-img {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    html { font-size: 14px; }
+    h1 { font-size: 2rem; }
+
+    /* #hero .logo { */ /* No longer static */
+        /* max-width: 150px; */
+    /* } */
+     #clock-logo {
+        width: 120px; /* Smaller clock on small mobile */
+        height: 120px;
+     }
+
+    .text-logo {
+        font-size: 3.5rem; /* Even smaller */
+    }
+     #hero p {
+        font-size: 1rem;
+    }
+     #preregister-form input[type="email"],
+    #preregister-form button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}

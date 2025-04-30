@@ -526,7 +526,7 @@ footer a:hover {
         order: 1;
         margin-bottom: 2rem;
         flex-basis: auto;
-        max-width: 350px;
+        /* max-width: 350px; */
     }
     .text-logo {
         font-size: 4.5rem; /* Slightly smaller */
@@ -552,9 +552,9 @@ footer a:hover {
         padding: 0 15px;
     }
 
-     #hero .hero-image {
-        max-width: 80%;
-    }
+     /* #hero .hero-image {
+        /* max-width: 80%; */
+    /* } */ 
     .text-logo {
         font-size: 4rem; /* Smaller on mobile */
         margin-bottom: 0.3rem;

@@ -3,8 +3,8 @@
 /* --- Base Styles & Resets --- */
 :root {
     /* Updated color scheme for Fitkhao (Green/Blue - Clean & Healthy) */
-    --primary-color: #4CAF50; /* Green */
-    --secondary-color: #2196F3; /* Blue */
+    --primary-color: #A1D51C; /* Green */
+    --secondary-color: #7AB92D; /* Blue */
     /* Alternative: --secondary-color: #FF9800; /* Orange */
     --dark-color: #2d3436; /* Darker Gray */
     --light-color: #f8f9fa; /* Very Light Gray */
@@ -12,7 +12,7 @@
     --white-color: #ffffff;
     --success-color: #28a745;
     --error-color: #dc3545;
-    --info-color: #17a2b8; /* For mailto message */
+    --info-color: #0b5561; /* For mailto message */
     --font-family: 'Poppins', sans-serif;
     --logo-font: 'Gloock', serif;
     --shadow-offset-x: 2px;

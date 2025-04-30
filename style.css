@@ -3,9 +3,8 @@
 /* --- Base Styles & Resets --- */
 :root {
     /* Updated color scheme for Fitkhao (Green/Blue - Clean & Healthy) */
-    --primary-color: #A1D51C; /* Green */
-    --secondary-color: #7AB92D; /* Blue */
-    /* Alternative: --secondary-color: #FF9800; /* Orange */
+    --primary-color: #A1D51C; 
+    --secondary-color: #7AB92D; 
     --dark-color: #2d3436; /* Darker Gray */
     --light-color: #f8f9fa; /* Very Light Gray */
     --text-color: #333;
@@ -40,6 +39,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px; /* Base font size */
+    overflow-x: hidden;
 }
 
 body {
@@ -120,6 +120,7 @@ img {
     justify-content: center;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
 #hero .container {
@@ -128,21 +129,29 @@ img {
     justify-content: space-between;
     gap: 40px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 #hero .hero-content {
     flex: 1;
     text-align: left;
     max-width: 600px;
+    min-width: 0;
 }
 
 #hero .hero-image {
     flex-basis: 40%;
-    margin: 20px auto 0;
+    display: flex; /* Use flex to easily center the image */
+    justify-content: center;
+    align-items: center;
+    max-width: 400px; /* Limit max width */
+    margin-left: auto; /* Push right on desktop */
+    margin-right: auto; /* Center fallback */
 }
 #hero .hero-image img {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
 
@@ -478,10 +487,10 @@ footer a:hover {
 
 
 /* --- Scroll Animation Classes --- */
-/* (These remain the same as the previous example) */
 .animate-on-scroll {
     opacity: 0;
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity;
 }
 
 .fade-in { opacity: 0; }
@@ -501,41 +510,47 @@ footer a:hover {
 
 
 /* --- Responsive Design --- */
-/* (These remain largely the same, minor tweaks possible if needed) */
 
 /* Tablets and smaller desktops */
 @media (max-width: 992px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
-    .container { max-width: 90%; }
+    /* .container { max-width: 90%; } */
 
     #hero .container {
         flex-direction: column;
         text-align: center;
+        justify-content: center; /* Center items vertically */
+        gap: 30px; /* Adjust gap for column layout */
     }
     #hero .hero-content {
         text-align: center;
-        max-width: 100%;
+        max-width: 100%; /* Allow full width */
         order: 2;
-        /* Center clock and text logo */
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%; /* Take full width */
     }
      #hero .hero-image {
         order: 1;
         margin-bottom: 2rem;
-        flex-basis: auto;
-        /* max-width: 350px; */
+        flex-basis: auto; /* Reset flex basis */
+        width: 90%; /* Control width */
+        max-width: 350px; /* Limit size */
+        margin-left: auto; /* Center */
+        margin-right: auto; /* Center */
     }
     .text-logo {
         font-size: 4.5rem; /* Slightly smaller */
     }
      #preregister-form {
         justify-content: center;
+        max-width: 450px; /* Adjust max width for slightly smaller screens */
     }
-    
+
 }
+
 
 /* Mobile devices */
 @media (max-width: 768px) {

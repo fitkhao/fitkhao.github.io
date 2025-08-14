@@ -295,6 +295,40 @@ img {
     border-color: var(--secondary-color);
 }
 
+/* Mobile Input Group Styles */
+.mobile-input-group {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    background-color: var(--white-color);
+    transition: border-color 0.3s ease;
+}
+
+.mobile-input-group:focus-within {
+    border-color: var(--secondary-color);
+}
+
+.country-code {
+    padding: 15px 0 15px 20px;
+    font-weight: 600;
+    color: var(--dark-color);
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+}
+
+#preregister-form input[type="tel"] {
+    flex-grow: 1;
+    padding: 15px 20px 15px 10px;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    font-size: 1rem;
+    outline: none;
+    background-color: transparent;
+}
+
 #preregister-form button {
     padding: 15px 30px;
     background-color: var(--white-color);
@@ -567,9 +601,11 @@ footer a:hover {
         padding: 0 15px;
     }
 
-     /* #hero .hero-image {
-        /* max-width: 80%; */
-    /* } */ 
+    /* Hide hero image on mobile */
+    #hero .hero-image {
+        display: none;
+    }
+    
     .text-logo {
         font-size: 4rem; /* Smaller on mobile */
         margin-bottom: 0.3rem;
@@ -587,6 +623,8 @@ footer a:hover {
         align-items: stretch;
     }
      #preregister-form input[type="email"],
+    #preregister-form input[type="tel"],
+    #preregister-form .mobile-input-group,
     #preregister-form button {
         width: 100%;
     }
@@ -626,6 +664,7 @@ footer a:hover {
         font-size: 1rem;
     }
      #preregister-form input[type="email"],
+    #preregister-form input[type="tel"],
     #preregister-form button {
         padding: 12px 20px;
         font-size: 0.95rem;

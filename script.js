@@ -22,7 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Form Handling (Using mailto:) ---
     const form = document.getElementById('preregister-form');
     const emailInput = document.getElementById('email');
+    const mobileInput = document.getElementById('mobile');
     const formMessage = document.getElementById('form-message');
+
+    // Mobile number input formatting
+    if (mobileInput) {
+        mobileInput.addEventListener('input', function(e) {
+            // Remove any non-digit characters
+            let value = e.target.value.replace(/\D/g, '');
+            // Limit to 10 digits
+            value = value.substring(0, 10);
+            e.target.value = value;
+        });
+    }
 
     // <<<--- IMPORTANT: SET YOUR FITKHAO BUSINESS EMAIL HERE --->>>
     const recipientEmail = 'fitkhao@gmail.com'; // Keep your recipient email
@@ -32,10 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault(); // Prevent default form submission
 
             const userEmail = emailInput.value.trim();
+            const userMobile = mobileInput.value.trim();
 
             // Basic validation
             if (!userEmail || !validateEmail(userEmail)) {
                 displayMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            if (!userMobile || !validateMobile(userMobile)) {
+                displayMessage('Please enter a valid 10-digit mobile number.', 'error');
                 return;
             }
 
@@ -46,10 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 I'd like to pre-register for the Fitkhao app launch!
 
-Please add my email to the notification list: ${userEmail}
+Please add my details to the notification list:
+Email: ${userEmail}
+Mobile: +91 ${userMobile}
 
 Looking forward to eating smart and staying fit!
-` // Added a bit more context relevant to Fitkhao
+` // Added mobile number to the email body
             );
 
             const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
@@ -66,8 +86,9 @@ Looking forward to eating smart and staying fit!
                     console.error("Failed to open mail client:", error);
                     displayMessage('Could not open email client. Please manually email us to pre-register.', 'error');
                  }
-                 // Optionally clear the input field
+                 // Optionally clear the input fields
                  // emailInput.value = '';
+                 // mobileInput.value = '';
             }, 500); // 0.5 second delay
 
         });
@@ -88,6 +109,14 @@ Looking forward to eating smart and staying fit!
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
+    }
+
+    function validateMobile(mobile) {
+        // Remove any spaces, dashes, or other characters
+        const cleanMobile = mobile.replace(/[\s\-\(\)]/g, '');
+        // Check if it's exactly 10 digits (Indian mobile number format)
+        const re = /^[6-9]\d{9}$/;
+        return re.test(cleanMobile);
     }
 
 
